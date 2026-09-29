@@ -1,11 +1,6 @@
 import { LoginForm } from "@/features/auth/components/login-form"
-
 const page = () => {
-  return (
-    <div>
-        <LoginForm/>
-    </div>
-  )
+  return <LoginForm/>
 }
 
 export default page
