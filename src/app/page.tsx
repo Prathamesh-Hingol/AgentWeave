@@ -12,13 +12,18 @@ const Page =() => {
     onSuccess:()=>{
       queryClient.invalidateQueries(trpc.getWorkflows.queryOptions());
     }
-  }));
+  }));  
+  const testAI=useMutation(trpc.testAi.mutationOptions());
+
   return (
     <div className="min-h-screen min-w-screen flex items-center justify-center flex-col gap-y-6">
       protected server component
       <div>
       {JSON.stringify(data, null ,2)}
       </div>
+      <Button onClick={()=>testAI.mutate()} disabled={testAI.isPending}>
+        Test AI
+      </Button>
       <Button onClick={()=>create.mutate()} disabled={create.isPending}>
         Create WorkFLow
       </Button>
