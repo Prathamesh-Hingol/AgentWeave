@@ -16,7 +16,7 @@ import {
   ErrorView,
   LoadingView
 } from "@/components/entity-component";
-import type { Workflow } from "@/generated/prisma";
+import type { Workflow } from "@prisma/client";
 import { WorkflowIcon } from "lucide-react";
 
 export const WorkflowsSearch = () => {
