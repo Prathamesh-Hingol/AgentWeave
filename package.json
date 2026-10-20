@@ -7,8 +7,10 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
+    "ngrok:dev": "dotenv run -- ngrok http --url=mastiff-semisoft-oblong.ngrok-free.dev 3000",
     "format": "biome format --write",
-    "inngest:dev": "inngest-cli dev"
+    "inngest:dev": "inngest-cli dev",
+    "dev:all": "dotenv run -- mprocs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^2.0.23",

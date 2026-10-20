@@ -42,6 +42,12 @@ const executionNodes: NodeTypeOption[] = [
     description: "Makes an HTTP request",
     icon: GlobeIcon,
   },
+  {
+    type: NodeType.GOOGLE_FORM_TRIGGER,
+    label: "Google Form",
+    description: "Runs the flow when a Google Form is submitted",
+    icon: "/logos/googleform.svg",
+  },
 ];
 
 
