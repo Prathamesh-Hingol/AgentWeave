@@ -2,8 +2,7 @@ import { auth } from "@/lib/auth";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { headers } from "next/headers";
 import { cache } from "react";
-import { polarClient } from "@/lib/polar";
-import { authClient } from "@/lib/auth-client";
+import { getCustomerProStatus, polarClient } from "@/lib/polar";
 import superjson from "superjson";
 export const createTRPCContext = cache(async () => {
 	/**
@@ -41,16 +40,13 @@ export const protectedProcedure = baseProcedure.use(async ({ ctx, next }) => {
 });
 export const premiumProcedure = protectedProcedure.use(
 	async ({ ctx, next }) => {
-		const customer = await authClient.customer.state();
-		if (
-			!customer.data?.active_subscriptions ||
-			customer.data.active_subscriptions.length === 0
-		) {
+		const proStatus = await getCustomerProStatus(ctx.auth.user.id);
+		if (!proStatus.isPro) {
 			throw new TRPCError({
 				code: "FORBIDDEN",
 				message: "Active subscription required",
 			});
 		}
-		return next({ ctx: { ...ctx, customer } });
+		return next({ ctx: { ...ctx, proStatus } });
 	},
 );

@@ -42,14 +42,14 @@ export const StripeTriggerDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
+      <DialogContent className="max-h-[85vh] flex flex-col p-0 gap-0 sm:max-w-lg">
+        <DialogHeader className="p-6 pb-4 border-b">
           <DialogTitle>Stripe Trigger Configuration</DialogTitle>
           <DialogDescription>
             Configure this webhook URL in your Stripe Dashboard to trigger this workflow on payment events.
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
             <Label htmlFor="webhook-url">
               Webhook URL

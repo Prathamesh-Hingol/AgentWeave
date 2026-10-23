@@ -97,8 +97,8 @@ export const GeminiDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
+      <DialogContent className="max-h-[85vh] flex flex-col p-0 gap-0 sm:max-w-lg">
+        <DialogHeader className="p-6 pb-4 border-b">
           <DialogTitle>Gemini Configuration</DialogTitle>
           <DialogDescription>
             Configure the AI model and prompts for this node.
@@ -107,9 +107,10 @@ export const GeminiDialog = ({
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleSubmit)}
-            className="space-y-8 mt-4"
+            className="flex flex-col flex-1 overflow-hidden"
           >
-            <FormField
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              <FormField
               control={form.control}
               name="credentialId"
               render={({ field }) => (
@@ -211,7 +212,8 @@ export const GeminiDialog = ({
               </FormItem>
             )}
             />
-            <DialogFooter className="mt-4">
+            </div>
+            <DialogFooter className="p-4 border-t bg-muted/20">
               <Button type="submit">Save</Button>
             </DialogFooter>
           </form>

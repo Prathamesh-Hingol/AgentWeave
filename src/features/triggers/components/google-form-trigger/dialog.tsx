@@ -43,15 +43,15 @@ export const GoogleFormTriggerDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
+      <DialogContent className="max-h-[85vh] flex flex-col p-0 gap-0 sm:max-w-lg">
+        <DialogHeader className="p-6 pb-4 border-b">
           <DialogTitle>Google Form Trigger Configuration</DialogTitle>
           <DialogDescription>
             Use this webhook URL in your Google Form's Apps Script to trigger
             this workflow when a form is submitted.
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
             <Label htmlFor="webhook-url">
               Webhook URL

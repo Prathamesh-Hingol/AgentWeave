@@ -103,7 +103,7 @@ export const AppSidebar = () => {
 					{!hasActiveSubscription && !isLoading && (
 						<SidebarMenuItem>
 							<SidebarMenuButton
-								tooltip="Upgade to Pro"
+								tooltip="Upgrade to Pro"
 								className="gap-x-4 h-10 px-4"
 								onClick={() => authClient.checkout({ slug: "pro" })}
 							>
@@ -116,8 +116,11 @@ export const AppSidebar = () => {
 						<SidebarMenuButton
 							tooltip="Billing Portal"
 							className="gap-x-4 h-10 px-4"
-							onClick={() => {
-								authClient.customer.portal();
+							onClick={async () => {
+								const res = await authClient.customer.portal();
+								if (res?.data?.url) {
+									window.location.href = res.data.url;
+								}
 							}}
 						>
 							<CreditCardIcon className="h-4 w-4" />
